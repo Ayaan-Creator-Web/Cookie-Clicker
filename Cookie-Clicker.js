@@ -26,6 +26,10 @@ var avghtml
 
 var avghtml2
 
+while (true) {
+    `<title>Cookie Clicker - ${cookies} Cookies</title>`
+}
+
 function displayavg() {
     avghtml = document.querySelector('.check3')
 
@@ -64,7 +68,7 @@ async function averages() {
         
         average = (sum / allcookies.length).toFixed(2)
 
-        //console.log(average);
+        console.log(average);
         }
     }
     
@@ -109,23 +113,23 @@ async function checkaverage() {
     }
 }
 
-//console.log(typeof allcookies)
+console.log(typeof allcookies)
 
-//let persecHTML
+let persecHTML
 
-//var grabpersechtml = '123';
+var grabpersechtml = '123';
 
 //while (true) {
-    //persecHTML = `<span class="check1" onclick="persecs()">${persec} Cookies per Second</span>`
-    //console.log('saved inside a variable');
+    persecHTML = `<span class="check1" onclick="persecs()">${persec} Cookies per Second</span>`
+    console.log('saved inside a variable');
 
-    //grabpersechtml = document.querySelector('.check1');
-    //console.log('grabbed html ➜ ' + grabpersechtml);
+    grabpersechtml = document.querySelector('.check1');
+    console.log('grabbed html ➜ ' + grabpersechtml);
 
-    //grabpersechtml = 'dfdf';
+    grabpersechtml = 'dfdf';
 
-    //grabpersechtml.innerHTML = persecHTML
-    //console.log('html displayed on the page');
+    grabpersechtml.innerHTML = persecHTML
+    console.log('html displayed on the page');
 //}
 
 
