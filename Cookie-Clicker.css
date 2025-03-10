@@ -1,0 +1,223 @@
+.basic-styling {
+    font-family: cursive;
+}
+
+.cursor {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: tomato
+}
+
+.pointerplz {
+    cursor: pointer;
+    width: 300px;
+}
+
+.costy {
+    cursor: pointer;
+}
+
+.grandma {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(33, 184, 91)
+}
+
+.farm {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(0, 162, 255)
+}
+
+.factory {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(255, 81, 197)
+}
+
+.bank {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(255, 81, 148)
+}
+
+.check1 {
+    border: weight;
+    cursor: pointer;
+    border-color:rgb(27, 43, 61);
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(236, 236, 236);
+    outline: 2cm;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    position: absolute;
+    left: 20px; 
+    top: 20px; 
+    width: 200px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.check2 {
+    border: weight;
+    cursor: pointer;
+    border-color:rgb(27, 43, 61);
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(236, 236, 236);
+    outline: 2cm;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    position: absolute;
+    left: 240px; 
+    top: 20px; 
+    width: 200px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.check3 {
+    border: weight;
+    cursor: pointer;
+    border-color:rgb(27, 43, 61);
+    border-radius: 8px;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(236, 236, 236);
+    outline: 2cm;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    position: absolute;
+    left: 460px; 
+    top: 20px; 
+    width: 200px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.small-font {
+    font-size: x-small;
+}
+
+.shop {
+    text-align: right;
+    position:absolute;
+    right: 20px;
+    top:20px;
+}
+
+.costy1 {
+    text-align: right;
+    position:absolute;
+    right: 150px;
+    top:30px;
+    font-size: small;
+}
+
+.shop4 {
+    text-align: right;
+    position:absolute;
+    right: 20px;
+    top:180px;
+}
+
+.shop3 {
+    text-align: right;
+    position:absolute;
+    right: 20px;
+    top:100px;
+}
+
+.costy3 {
+    text-align: right;
+    position:absolute;
+    right: 150px;
+    top:190px;
+    font-size: small;
+}
+
+.costy2 {
+    text-align: right;
+    position:absolute;
+    right: 150px;
+    top:110px;
+    font-size: small;
+}
+
+.cookiepic {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aquamarine;
+}
+
+.cookiecount {
+    text-align: center;
+}
+
+.heading {
+    text-align: center;
+}
+
+.shop5 {
+    text-align: right;
+    position:absolute;
+    right: 20px;
+    top:260px;
+}
+
+.costy4 {
+    text-align: right;
+    position:absolute;
+    right: 160px;
+    top:270px;
+    font-size: small;
+}
+
+.shop6 {
+    text-align: right;
+    position:absolute;
+    right: 20px;
+    top:340px;
+}
+
+.costy5 {
+    text-align: right;
+    position:absolute;
+    right: 145px;
+    top:355px;
+    font-size: small;
+}
