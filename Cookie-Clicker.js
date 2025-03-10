@@ -26,10 +26,6 @@ var avghtml
 
 var avghtml2
 
-while (true) {
-    `<title>Cookie Clicker - ${cookies} Cookies</title>`
-}
-
 function displayavg() {
     avghtml = document.querySelector('.check3')
 
