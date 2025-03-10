@@ -26,6 +26,15 @@ var avghtml
 
 var avghtml2
 
+async function cookieintitle() {
+    while (true) {
+        await delay(1)
+        document.title = `Cookie Clicker - ${cookies} Cookies`
+    }
+}
+
+cookieintitle()
+
 function displayavg() {
     avghtml = document.querySelector('.check3')
 
