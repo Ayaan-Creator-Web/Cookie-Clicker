@@ -1,7 +1,5 @@
 //JSON.parse(localStorage.getItem('cookies'))
 
-cookieadd2()
-
 let cookies = JSON.parse(localStorage.getItem('cookies')) ? JSON.parse(localStorage.getItem('cookies')) : 0
 
 var addhtml
@@ -166,13 +164,14 @@ function cookieadd() {
 function wipeout() {
     Swal.fire({
         title: "Are you sure that you want to wipe out all your data?",
-        showConfirmButton: false,
-        showDenyButton: true,
+        showConfirmButton: true,
+        showDenyButton: false,
         showCancelButton: true,
-        denyButtonText: "Yes, please wipe out my data",
+        confirmButtonText: "Yes, please wipe out my data",
       }).then((result) => {
-        if (result.isDenied) {
-            Swal.fire("Wiped Out!", "", "success");
+        if (result.isConfirmed) {
+            Swal.fire("Wiped Out! Please Refresh the Page", "", "success");
+            /*
             allcookies = [];
             cookies = 0
             perclick = 0
@@ -182,6 +181,9 @@ function wipeout() {
             farmcost = 5000
             factorycost = 50000
             bankcost = 65000
+            */
+
+            localStorage.clear()
         }
       });
 }
@@ -296,7 +298,6 @@ function grandma() {
             icon: "error",
             title: 'This product costs ' + Math.round(grandmacost) + ' Cookies. You will need ' + Math.round(grandmacost - cookies) + ' more Cookies'
             });
-            cookieadd2()
     }
 }
 
@@ -553,3 +554,27 @@ function checkbankcost() {
             title: 'Bank costs ' + Math.round(bankcost) + ' Cookies'
             });
     }
+
+async function refresh() {
+    //cookieadd2();
+    //cursor()
+    //grandma()
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom",
+        showConfirmButton: false,
+        timer: 400,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+        }
+        });
+        Toast.fire({
+        title: 'Refreshing'
+        });
+
+        await delay(200);
+
+        window.location.href = "https://ayaan-creator-web.github.io/Cookie-Clicker/";
+}
