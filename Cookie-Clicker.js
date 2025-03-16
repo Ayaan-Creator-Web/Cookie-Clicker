@@ -296,6 +296,7 @@ function grandma() {
             icon: "error",
             title: 'This product costs ' + Math.round(grandmacost) + ' Cookies. You will need ' + Math.round(grandmacost - cookies) + ' more Cookies'
             });
+            cookieadd2()
     }
 }
 
