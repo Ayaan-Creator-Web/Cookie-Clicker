@@ -1,35 +1,69 @@
-//var clicksnd = new Audio("click-sound-effect.wav");
+//JSON.parse(localStorage.getItem('cookies'))
+
+cookieadd2()
+
+let cookies = JSON.parse(localStorage.getItem('cookies')) ? JSON.parse(localStorage.getItem('cookies')) : 0
 
 var addhtml
 
-var cookies = 0
-
 var cookiehtml = `<p>${cookies} Cookies<p>`
 
-let perclick = 1
+let perclick = JSON.parse(localStorage.getItem('perclick')) ? JSON.parse(localStorage.getItem('perclick')) : 1
 
-var cursorcost = 30
+var cursorcost = JSON.parse(localStorage.getItem('cursorcost')) ? JSON.parse(localStorage.getItem('cursorcost')) : 30
 
-var grandmacost = 500
+var grandmacost = JSON.parse(localStorage.getItem('grandmacost')) ? JSON.parse(localStorage.getItem('grandmacost')) : 500
 
-var farmcost = 5000
+var farmcost = JSON.parse(localStorage.getItem('farmcost')) ? JSON.parse(localStorage.getItem('farmcost')) : 5000
 
-var factorycost = 50000
+var factorycost = JSON.parse(localStorage.getItem('factorycost')) ? JSON.parse(localStorage.getItem('factorycost')) : 50000
 
-var bankcost = 65000
+var bankcost = JSON.parse(localStorage.getItem('farmcost')) ? JSON.parse(localStorage.getItem('farmcost')) : 65000
 
-let persec = 0
+let persec = JSON.parse(localStorage.getItem('persec')) ? JSON.parse(localStorage.getItem('persec')) : 0
 
 const clicksper = document.querySelector('.clicksper')
 
 var avghtml
 
+const allcookies = [];
+
+var oldcookies = '';
+
+var sum
+
+var average
+
+//averages()
+
 var avghtml2
+
+//console.log(typeof allcookies)
+
+let persecHTML
+
+var grabpersechtml = '123';
+
+//while (true) {
+    persecHTML = `<span class="check1" onclick="persecs()">${persec} Cookies per Second</span>`
+    //console.log('saved inside a variable');
+
+    grabpersechtml = document.querySelector('.check1');
+    //console.log('grabbed html ➜ ' + grabpersechtml);
+
+    grabpersechtml = 'dfdf';
+
+    grabpersechtml.innerHTML = persecHTML
+    //console.log('html displayed on the page');
+//}
+
+
+//clicksper.innerHTML = `<p>hello</p>`
 
 async function cookieintitle() {
     while (true) {
         await delay(1)
-        document.title = `Cookie Clicker - ${cookies} Cookies`
+        document.title = `Cookie Clicker - ${Math.round(cookies)} Cookies`
     }
 }
 
@@ -43,17 +77,10 @@ function displayavg() {
     avghtml.innerHTML = avghtml2
 }
 
-
-
-const allcookies = [];
-
-var oldcookies = '';
-
-var sum
-
-var average
-
-averages()
+function displaycookies() {
+    var cookiecount = `${JSON.parse(localStorage.getItem('cookies'))} Cookies`? `${JSON.parse(localStorage.getItem('cookies'))} Cookies` : 0
+    document.querySelector('.cookiecount').innerHTML = cookiecount
+}
 
 async function averages() {
     while (true) {
@@ -118,30 +145,10 @@ async function checkaverage() {
     }
 }
 
-console.log(typeof allcookies)
-
-let persecHTML
-
-var grabpersechtml = '123';
-
-//while (true) {
-    persecHTML = `<span class="check1" onclick="persecs()">${persec} Cookies per Second</span>`
-    console.log('saved inside a variable');
-
-    grabpersechtml = document.querySelector('.check1');
-    console.log('grabbed html ➜ ' + grabpersechtml);
-
-    grabpersechtml = 'dfdf';
-
-    grabpersechtml.innerHTML = persecHTML
-    console.log('html displayed on the page');
-//}
-
-
-//clicksper.innerHTML = `<p>hello</p>`
-
 function cookieadd() {
     cookies += perclick
+
+    localStorage.setItem('cookies', JSON.stringify(cookies));
 
     cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
 
@@ -149,9 +156,34 @@ function cookieadd() {
 
     addhtml.innerHTML = cookiehtml
 
+    localStorage.setItem('perclick', JSON.stringify(perclick));
+
     //console.log('The Cookie has been Clicked');
 
     //clicksnd.play();
+}
+
+function wipeout() {
+    Swal.fire({
+        title: "Are you sure that you want to wipe out all your data?",
+        showConfirmButton: false,
+        showDenyButton: true,
+        showCancelButton: true,
+        denyButtonText: "Yes, please wipe out my data",
+      }).then((result) => {
+        if (result.isDenied) {
+            Swal.fire("Wiped Out!", "", "success");
+            allcookies = [];
+            cookies = 0
+            perclick = 0
+            persec = 0
+            cursorcost = 30
+            grandmacost = 500
+            farmcost = 5000
+            factorycost = 50000
+            bankcost = 65000
+        }
+      });
 }
 
 function cursor() {
@@ -177,6 +209,8 @@ function cursor() {
             });
             cookiehtml = `<p id="results">${cookies} Cookies<p>`
             addhtml.innerHTML = cookiehtml
+            localStorage.setItem('perclick', JSON.stringify(perclick));
+            localStorage.setItem('cursorcost', JSON.stringify(cursorcost));
     }
     else {
         const Toast = Swal.mixin({
@@ -243,6 +277,8 @@ function grandma() {
             title: 'Purchase Successful!'
             });
             cookieadd2()
+            localStorage.setItem('grandmacost', JSON.stringify(grandmacost));
+            localStorage.setItem('perclick', JSON.stringify(perclick));
     }
     else {
         const Toast = Swal.mixin({
@@ -306,6 +342,8 @@ async function cookieadd2() {
         cookies += 1;
         cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
         addhtml.innerHTML = cookiehtml
+
+        localStorage.setItem('persec', JSON.stringify(persec));
     }
     
 }
@@ -350,6 +388,8 @@ function farm() {
             title: 'Purchase Successful!'
             });
             cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
+            localStorage.setItem('perclick', JSON.stringify(perclick));
+            localStorage.setItem('farmcost', JSON.stringify(farmcost));
     }
     else {
         const Toast = Swal.mixin({
@@ -369,7 +409,8 @@ function farm() {
             });
     }
 }
-    function checkfarmcost() {
+
+function checkfarmcost() {
         const Toast = Swal.mixin({
                 toast: true,
                 position: "bottom",
@@ -385,7 +426,7 @@ function farm() {
                 icon: "info",
                 title: 'Farm costs ' + Math.round(farmcost) + ' Cookies'
                 });
-        }
+}
 
 function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
@@ -411,6 +452,8 @@ function factory() {
             title: 'Purchase Successful!'
             });
             cookieadd2()
+            localStorage.setItem('persec', JSON.stringify(persec));
+            localStorage.setItem('factorycost', JSON.stringify(factorycost));
     }
     else {
         const Toast = Swal.mixin({
@@ -471,6 +514,7 @@ function bank() {
             title: 'Purchase Successful!'
             });
             cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
+            localStorage.setItem('bankcost', JSON.stringify(bankcost));
     }
     else {
         const Toast = Swal.mixin({
