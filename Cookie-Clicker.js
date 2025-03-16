@@ -1,5 +1,7 @@
 //JSON.parse(localStorage.getItem('cookies'))
 
+cookieadd2();
+
 let cookies = JSON.parse(localStorage.getItem('cookies')) ? JSON.parse(localStorage.getItem('cookies')) : 0
 
 var addhtml
@@ -18,7 +20,7 @@ var factorycost = JSON.parse(localStorage.getItem('factorycost')) ? JSON.parse(l
 
 var bankcost = JSON.parse(localStorage.getItem('farmcost')) ? JSON.parse(localStorage.getItem('farmcost')) : 65000
 
-let persec = JSON.parse(localStorage.getItem('persec')) ? JSON.parse(localStorage.getItem('persec')) : 0
+let persec = JSON.parse(localStorage.getItem('persec')) ? JSON.parse(localStorage.getItem('persec')) : null
 
 const clicksper = document.querySelector('.clicksper')
 
@@ -156,6 +158,8 @@ function cookieadd() {
 
     localStorage.setItem('perclick', JSON.stringify(perclick));
 
+    cookieadd2();
+
     //console.log('The Cookie has been Clicked');
 
     //clicksnd.play();
@@ -170,20 +174,12 @@ function wipeout() {
         confirmButtonText: "Yes, please wipe out my data",
       }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire("Wiped Out! Please Refresh the Page", "", "success");
-            /*
-            allcookies = [];
-            cookies = 0
-            perclick = 0
-            persec = 0
-            cursorcost = 30
-            grandmacost = 500
-            farmcost = 5000
-            factorycost = 50000
-            bankcost = 65000
-            */
 
+            //clear all data
             localStorage.clear()
+
+            //refresh the page
+            window.location.href = ""
         }
       });
 }
@@ -339,33 +335,55 @@ function perclicks() {
 
 async function cookieadd2() {
     while (true) {
-        cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
-        await delay(1000 / persec);
-        cookies += 1;
-        cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
-        addhtml.innerHTML = cookiehtml
-
-        localStorage.setItem('persec', JSON.stringify(persec));
+        await delay(1);
+        if (persec) {
+            cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
+            await delay(1000 / persec);
+            cookies += 1;
+            cookiehtml = `<p id="results">${Math.round(cookies)} Cookies<p>`
+            addhtml.innerHTML = cookiehtml
+    
+            localStorage.setItem('persec', JSON.stringify(persec));
+        }
     }
     
 }
 
 function persecs() {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "bottom",
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-        }
-        });
-        Toast.fire({
-        icon: "info",
-        title: 'You have ' + persec + ' Cookies per second'
-        });
+    if (persec) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+            }
+            });
+            Toast.fire({
+            icon: "info",
+            title: 'You have ' + persec + ' Cookies per second'
+            });
+    }
+    else {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom",
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+            }
+            });
+            Toast.fire({
+            icon: "info",
+            title: 'You have ' + 0 + ' Cookies per second'
+            });
+    }
 }
 
 function farm() {
@@ -556,6 +574,7 @@ function checkbankcost() {
     }
 
 async function refresh() {
+    cookieadd2();
     //cookieadd2();
     //cursor()
     //grandma()
@@ -576,5 +595,5 @@ async function refresh() {
 
         await delay(200);
 
-        window.location.href = "https://ayaan-creator-web.github.io/Cookie-Clicker/";
+        //window.location.href = "https://ayaan-creator-web.github.io/Cookie-Clicker/";
 }
